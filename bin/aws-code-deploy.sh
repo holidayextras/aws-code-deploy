@@ -505,6 +505,11 @@ if [ -n "$DEPLOYMENT_DESCRIPTION" ]; then
 fi
 
 
+if [ -n "$AWS_CODE_DEPLOY_DEPLOYMENT_FILE_EXISTS_BEHAVIOR" ]; then
+  DEPLOYMENT_CMD="$DEPLOYMENT_CMD --file-exists-behavior \"$AWS_CODE_DEPLOY_DEPLOYMENT_FILE_EXISTS_BEHAVIOR\""
+fi
+
+
 DEPLOYMENT_OUTPUT=""
 runCommand "$DEPLOYMENT_CMD" \
            "Deployment of application \"$APPLICATION_NAME\" on deployment group \"$DEPLOYMENT_GROUP\" failed" \
